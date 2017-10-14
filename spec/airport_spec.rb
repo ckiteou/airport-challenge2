@@ -26,7 +26,7 @@ describe Airport do
 
     it 'does not allow a plane to land if the capacity is full' do
       allow(subject.weather).to receive(:stormy?).and_return(false)
-      3.times { subject.land(jimmy) }
+      subject.capacity.times { subject.land(jimmy) }
       expect{subject.land(jimmy)}.to raise_error 'Plane cannot land as capacity is full'
     end
   end
@@ -56,6 +56,18 @@ describe Airport do
       subject.land(jimmy)
       allow(subject.weather).to receive(:stormy?).and_return(true)
       expect{subject.take_off(jimmy)}.to raise_error 'Plane cannot take off as weather is too stormy'
+    end
+  end
+
+  describe 'set_capacity' do
+    it 'can set the default capacity on instantiation' do
+      cartman = Airport.new(50)
+      expect(cartman.capacity).to eq 50
+    end
+
+    it 'can change the default capacity' do
+      subject.capacity = 100
+      expect(subject.capacity).to eq 100
     end
   end
 end
