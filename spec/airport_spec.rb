@@ -1,14 +1,14 @@
 require 'airport'
 
 describe Airport do
-  plane = Plane.new
+  jimmy = Plane.new('FR3129')
 
   describe '#land' do
     it { is_expected.to respond_to(:land).with(1).argument }
 
     it 'has the plane after its landed' do
-      subject.land(plane)
-      expect(subject.planes).to include plane
+      subject.land(jimmy)
+      expect(subject.planes).to include jimmy
     end
   end
 
@@ -16,9 +16,9 @@ describe Airport do
     it { is_expected.to respond_to(:take_off).with(1).argument }
 
     it 'does not have the plane after it has taken off' do
-      subject.land(plane)
-      subject.take_off(plane)
-      expect(subject.planes).to_not include plane
+      subject.land(jimmy)
+      subject.take_off(jimmy)
+      expect(subject.planes).to_not include jimmy
     end
   end
 end

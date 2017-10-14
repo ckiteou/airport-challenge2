@@ -13,5 +13,6 @@ class Airport
 
   def take_off(plane)
     @planes.delete(plane)
+    plane.change_flying_status
   end
 end
