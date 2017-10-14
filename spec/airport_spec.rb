@@ -23,6 +23,12 @@ describe Airport do
       allow(subject.weather).to receive(:stormy?).and_return(true)
       expect{subject.land(jimmy)}.to raise_error 'Plane cannot land as weather is too stormy'
     end
+
+    it 'does not allow a plane to land if the capacity is full' do
+      allow(subject.weather).to receive(:stormy?).and_return(false)
+      3.times { subject.land(jimmy) }
+      expect{subject.land(jimmy)}.to raise_error 'Plane cannot land as capacity is full'
+    end
   end
 
   describe '#take_off' do
