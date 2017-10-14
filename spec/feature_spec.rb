@@ -1,3 +1,5 @@
 # plane = Plane.new
 # airport = Airport.new
-# aiport.land(plane)
+# p airport.land(plane)
+# airport.take_off(plane)
+# p airport.planes
