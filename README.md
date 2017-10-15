@@ -1,4 +1,6 @@
+[![Build Status](https://travis-ci.org/ckiteou/airport-challenge2.svg?branch=master)](https://travis-ci.org/ckiteou/airport-challenge2.svg?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/ckiteou/airport-challenge2/badge.svg?branch=master)](https://coveralls.io/github/ckiteou/airport-challenge2?branch=master)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/cbfbf1b058c4f1bc3447/test_coverage)](https://codeclimate.com/github/ckiteou/airport-challenge2/test_coverage)
 
 Airport Challenge
 =================
