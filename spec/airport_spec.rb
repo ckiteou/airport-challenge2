@@ -1,8 +1,8 @@
 require 'airport'
 
 describe Airport do
-  let(:jimmy) { Plane.new('FR3129') }
-  let(:imogen) { Plane.new('BA123') }
+  let(:jimmy) { double :plane }
+  let(:imogen) { double :plane }
 
   before do
     allow(subject.weather).to receive(:stormy?).and_return(false)
@@ -23,18 +23,23 @@ describe Airport do
 
     it 'does not allow a plane to land if the weather is stormy' do
       allow(subject.weather).to receive(:stormy?).and_return(true)
-      expect { subject.land(jimmy) }.to raise_error
-      'Plane cannot land as weather is too stormy'
+      message = 'Plane cannot land as weather is too stormy'
+      expect { subject.land(jimmy) }.to raise_error message
     end
 
     it 'does not allow a plane to land if the capacity is full' do
       subject.capacity.times { subject.land(jimmy) }
-      expect { subject.land(jimmy) }.to raise_error
-      'Plane cannot land as capacity is full'
+      message = 'Plane cannot land as capacity is full'
+      expect { subject.land(jimmy) }.to raise_error message
     end
   end
 
   describe '#take_off' do
+    before do
+      allow(jimmy).to receive(:change_flying_status)
+      allow(imogen).to receive(:change_flying_status)
+    end
+
     it { is_expected.to respond_to(:take_off).with(1).argument }
 
     it 'does not have the plane after it has taken off' do
@@ -54,8 +59,8 @@ describe Airport do
     it 'prevents the plane from taking off if the weather is stormy' do
       subject.land(jimmy)
       allow(subject.weather).to receive(:stormy?).and_return(true)
-      expect { subject.take_off(jimmy) }.to raise_error
-      'Plane cannot take off as weather is too stormy'
+      message = 'Plane cannot take off as weather is too stormy'
+      expect { subject.take_off(jimmy) }.to raise_error message
     end
   end
 
