@@ -12,6 +12,3 @@ class Weather
     OUTLOOK.sample
   end
 end
-
-weather = Weather.new
-p weather.stormy?
