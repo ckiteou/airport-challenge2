@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.0'
 
+gem 'coveralls', require: false
 gem 'rake'
 gem 'reek'
 gem 'rspec'

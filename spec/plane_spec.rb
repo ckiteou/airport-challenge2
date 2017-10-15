@@ -5,17 +5,17 @@ describe Plane do
 
   describe '#change_flying_status' do
     it 'initializes in a state of not flying' do
-      expect(timmy.flying).to eq false
+      expect(timmy.flying?).to eq false
     end
 
     it 'changes flying status to true' do
       timmy.change_flying_status
-      expect(timmy.flying).to eq true
+      expect(timmy.flying?).to eq true
     end
 
     it 'changes flying status to not true' do
       timmy.change_flying_status
-      expect(timmy.flying).to eq false
+      expect(timmy.flying?).to eq false
     end
   end
 
