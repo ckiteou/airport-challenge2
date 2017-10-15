@@ -48,7 +48,7 @@ $ irb
 
 To run the tests:
 ```
-$ rpsec
+$ rspec
 ```
 
 ### Technologies
