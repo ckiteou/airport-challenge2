@@ -9,7 +9,6 @@ describe Airport do
   end
 
   describe '#land' do
-
     it { is_expected.to respond_to(:land).with(1).argument }
 
     it 'has the plane after its landed' do
@@ -24,17 +23,18 @@ describe Airport do
 
     it 'does not allow a plane to land if the weather is stormy' do
       allow(subject.weather).to receive(:stormy?).and_return(true)
-      expect{subject.land(jimmy)}.to raise_error 'Plane cannot land as weather is too stormy'
+      expect { subject.land(jimmy) }.to raise_error
+      'Plane cannot land as weather is too stormy'
     end
 
     it 'does not allow a plane to land if the capacity is full' do
       subject.capacity.times { subject.land(jimmy) }
-      expect{subject.land(jimmy)}.to raise_error 'Plane cannot land as capacity is full'
+      expect { subject.land(jimmy) }.to raise_error
+      'Plane cannot land as capacity is full'
     end
   end
 
   describe '#take_off' do
-
     it { is_expected.to respond_to(:take_off).with(1).argument }
 
     it 'does not have the plane after it has taken off' do
@@ -54,7 +54,8 @@ describe Airport do
     it 'prevents the plane from taking off if the weather is stormy' do
       subject.land(jimmy)
       allow(subject.weather).to receive(:stormy?).and_return(true)
-      expect{subject.take_off(jimmy)}.to raise_error 'Plane cannot take off as weather is too stormy'
+      expect { subject.take_off(jimmy) }.to raise_error
+      'Plane cannot take off as weather is too stormy'
     end
   end
 

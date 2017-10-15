@@ -1,5 +1,4 @@
 class Weather
-
   def stormy?
     random_outlook == 'stormy'
   end

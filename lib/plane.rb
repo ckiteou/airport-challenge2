@@ -1,5 +1,4 @@
 class Plane
-
   attr_reader :flying, :registration
   def initialize(registration)
     @registration = registration
